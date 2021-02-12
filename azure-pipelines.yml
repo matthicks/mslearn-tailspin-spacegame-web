@@ -9,16 +9,12 @@ trigger:
 pool:
   vmImage: 'ubuntu-18.04'
   demands:
-  - npm
-
-variables:
-  buildConfiguration: 'Release'
+    - npm
 
 steps:
 - task: UseDotNet@2
   displayName: 'Use .NET Core SDK 3.1.300'
   inputs:
-    packageType: sdk
     version: 3.1.300
 
 - task: Npm@1
@@ -59,5 +55,5 @@ steps:
     zipAfterPublish: true
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Arifact: drop'
+  displayName: 'Publish Artifact: drop'
   condition: succeeded()
